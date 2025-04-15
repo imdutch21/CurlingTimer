@@ -5,11 +5,28 @@
         <h5 class="mb-0">Existing Timers</h5>
     </div>
     <div class="card-body">
-        <div class="d-flex flex-wrap gap-2">
+        <div class="row">
             @for (timer of timers; track timer.title) {
-            <button class="btn btn-outline-primary" (click)="startTimer(timer)">
-                {{timer.title}}
-            </button>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100 border-primary">
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="card-title">{{timer.title}}</h6>
+                        <div class="mt-auto d-flex justify-content-between">
+                            <button class="btn btn-outline-primary" (click)="startTimer(timer)">
+                                <i class="bi bi-play-fill"></i> Start
+                            </button>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-secondary" (click)="editTimer(timer)">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button class="btn btn-outline-danger" (click)="deleteTimer(timer)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             }
         </div>
     </div>

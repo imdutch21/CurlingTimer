@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-setup',
-    imports: [FormsModule],
-    standalone: true,
-    templateUrl: './setup.component.html',
-    styleUrl: './setup.component.css'
+  selector: 'app-setup',
+  imports: [FormsModule],
+  standalone: true,
+  templateUrl: './setup.component.html',
+  styleUrl: './setup.component.css'
 })
 export class SetupComponent implements OnInit {
   public timerSetup: TimerSetup = new TimerSetup();
@@ -35,9 +35,20 @@ export class SetupComponent implements OnInit {
   public create() {
     this.timers.push(this.timerSetup);
     localStorage.setItem("timers", JSON.stringify(this.timers))
+    this.timerSetup = new TimerSetup();
   }
 
   public startTimer(timerSetup: TimerSetup) {
     this.router.navigate(['/timer', { timerJson: JSON.stringify(timerSetup) }])
+  }
+
+  public editTimer(timer: TimerSetup) {
+    this.timerSetup = timer;
+  }
+
+  public deleteTimer(timer: TimerSetup){
+    this.timers.splice(this.timers.indexOf(timer), 1)
+    localStorage.setItem("timers", JSON.stringify(this.timers))
+    this.timerSetup = new TimerSetup();
   }
 }
