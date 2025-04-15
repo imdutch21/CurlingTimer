@@ -14,7 +14,7 @@ export class SetupComponent implements OnInit {
   public timerSetup: TimerSetup = new TimerSetup();
   public timers: TimerSetup[] = []
   private readonly router = inject(Router);
-
+  public updating:boolean = false;
 
   ngOnInit(): void {
     var timersString = localStorage.getItem("timers")
@@ -44,10 +44,16 @@ export class SetupComponent implements OnInit {
 
   public editTimer(timer: TimerSetup) {
     this.timerSetup = timer;
+    this.updating = true
   }
 
   public deleteTimer(timer: TimerSetup){
     this.timers.splice(this.timers.indexOf(timer), 1)
+    localStorage.setItem("timers", JSON.stringify(this.timers))
+    this.timerSetup = new TimerSetup();
+  }
+
+  public save(){
     localStorage.setItem("timers", JSON.stringify(this.timers))
     this.timerSetup = new TimerSetup();
   }

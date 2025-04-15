@@ -33,6 +33,7 @@
 </div>
 }
 
+
 <!-- New Timer Section -->
 <div class="card">
     <div class="card-header bg-success text-white">
@@ -53,6 +54,45 @@
                     <label for="timerEndText" class="form-label">End text</label>
                     <input type="text" id="timerEndText" class="form-control" [(ngModel)]="timerSetup.endText"
                         name="endText" placeholder="Text to display when timer ends">
+                </div>
+            </div>
+        </div>
+
+        <!-- Color and Logo Settings -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="colorBar" class="form-label">Bar Color</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-paint-bucket"></i></span>
+                        <input type="color" id="colorBar" class="form-control form-control-color"
+                            [(ngModel)]="timerSetup.colorBar" name="colorBar" title="Choose bar color">
+                    </div>
+                    <small class="text-muted">Select color for timer bar</small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="colorBorder" class="form-label">Border Color</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-border-all"></i></span>
+                        <input type="color" id="colorBorder" class="form-control form-control-color"
+                            [(ngModel)]="timerSetup.colorBorder" name="colorBorder" title="Choose border color">
+                    </div>
+                    <small class="text-muted">Select color for timer border</small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="logoUrl" class="form-label">Logo URL</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-image"></i></span>
+                        <input type="text" id="logoUrl" class="form-control" [(ngModel)]="timerSetup.logoUrl"
+                            name="logoUrl" placeholder="https://example.com/logo.png">
+                    </div>
+                    <small class="text-muted">URL to display logo on timer</small>
                 </div>
             </div>
         </div>
@@ -98,10 +138,18 @@
         </div>
 
         <!-- Create Timer Button -->
+        @if(!updating){
         <div class="d-grid gap-2 col-6 mx-auto mt-4">
             <button class="btn btn-success btn-lg" (click)="create()">
                 <i class="bi bi-plus-lg"></i> Create Timer
             </button>
         </div>
+        } @else{
+        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+            <button class="btn btn-success btn-lg" (click)="save()">
+                Update Timer
+            </button>
+        </div>
+        }
     </div>
 </div>

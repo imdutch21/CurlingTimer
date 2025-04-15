@@ -3,10 +3,11 @@ import { TimerSetup } from '../../models/timer-setup.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'app-timer',
-    imports: [],
-    templateUrl: './timer.component.html',
-    styleUrl: './timer.component.css'
+  selector: 'app-timer',
+  imports: [],
+  standalone: true,
+  templateUrl: './timer.component.html',
+  styleUrl: './timer.component.css'
 })
 export class TimerComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
@@ -19,7 +20,7 @@ export class TimerComponent implements OnInit {
   public currentTimerIndex: number = 0;
   public progressPercentage: number = 0;
 
-  public finished:boolean = false;
+  public finished: boolean = false;
 
   private timeout: any = null;
 
@@ -27,8 +28,31 @@ export class TimerComponent implements OnInit {
     let timerJson = this.route.snapshot.paramMap.get('timerJson');
     if (timerJson !== null) {
       this.timerSetup = JSON.parse(timerJson);
+      if (this.timerSetup.colorBar == null || this.timerSetup.colorBar == "") {
+        this.timerSetup.colorBar = "#800080"
+      }
+      if (this.timerSetup.colorBorder == null || this.timerSetup.colorBorder == "") {
+        this.timerSetup.colorBorder = "#800080"
+      }
+      if (this.timerSetup.logoUrl == null || this.timerSetup.logoUrl == "") {
+        this.timerSetup.logoUrl = "https://www.vebego.com/media/wksmrxiz/logo-vebego-svg.svg"
+      }
+      this.addTimerIfNotExists();
     }
     this.timeout = setInterval(() => this.updateTimer(), 10);
+  }
+
+  addTimerIfNotExists() {
+    if (this.timerSetup === null || this.timerSetup === new TimerSetup()) return;
+
+    var timersString = localStorage.getItem("timers")
+    let timers: TimerSetup[] = []
+    if (timersString !== null) {
+      timers = JSON.parse(timersString);
+    }
+    if(timers.find(t => t.title == this.timerSetup.title)) return;
+    timers.push(this.timerSetup)
+    localStorage.setItem("timers", JSON.stringify(timers))
   }
 
   updateTimer() {

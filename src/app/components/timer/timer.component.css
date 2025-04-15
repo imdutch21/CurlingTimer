@@ -1,50 +1,100 @@
+/* CSS Styles */
+.timer-container {
+    position: relative;
+    height: 100vh;
+    padding: 2rem 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .logo {
     display: block;
-    margin-top: 20;
+    max-width: 50%;
     height: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 2rem;
 }
 
 .title {
-    font-size: 16rem;
+    font-size: calc(3rem + 5vw);
     font-weight: bold;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
     font-family: puffin-display, sans-serif;
+    line-height: 1.1;
 }
 
 .timer {
-    font-size: 4rem;
-    color: gray;
+    font-size: calc(2rem + 2vw);
+    color: #6c757d;
+    /* Bootstrap gray */
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+.progress {
+    position: fixed;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 50px;
+    margin: 0;
+    border-radius: 0px !important;
+    border-bottom-left-radius: 20px 20px !important;
+    border-bottom-right-radius: 20px 20px !important;
+    z-index: 900;
+    /* Lower z-index to go behind the border */
+    background-color: rgba(211, 211, 211, 0.5);
 }
 
 .progress-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background-color: lightgray;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: purple;
-    width: 50%;
-    /* This should be updated dynamically */
+    /* Removed striped class from HTML and any related styling here */
+    transition: width 0.3s ease;
 }
 
 .edges {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    border: 20px solid purple;
+    border: 20px solid;
     border-radius: 30px;
     pointer-events: none;
+    z-index: 1000;
+    /* Higher z-index than the progress bar */
 }
 
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .edges {
+        border-width: 10px;
+        border-radius: 15px;
+    }
 
+    .timer {
+        margin-bottom: 1.5rem;
+    }
+
+    .progress {
+        height: 35px;
+        left: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .timer-container {
+        padding: 1rem 1rem 0 1rem;
+    }
+
+    .edges {
+        border-width: 5px;
+        border-radius: 10px;
+    }
+
+    .progress {
+        left: 0px;
+        right: 0px;
+    }
+}
