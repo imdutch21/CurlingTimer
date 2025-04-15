@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-setup',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './setup.component.html',
-  styleUrl: './setup.component.css'
+    selector: 'app-setup',
+    imports: [FormsModule],
+    standalone: true,
+    templateUrl: './setup.component.html',
+    styleUrl: './setup.component.css'
 })
 export class SetupComponent implements OnInit {
   public timerSetup: TimerSetup = new TimerSetup();

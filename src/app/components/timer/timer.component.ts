@@ -3,11 +3,10 @@ import { TimerSetup } from '../../models/timer-setup.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-timer',
-  standalone: true,
-  imports: [],
-  templateUrl: './timer.component.html',
-  styleUrl: './timer.component.css'
+    selector: 'app-timer',
+    imports: [],
+    templateUrl: './timer.component.html',
+    styleUrl: './timer.component.css'
 })
 export class TimerComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
