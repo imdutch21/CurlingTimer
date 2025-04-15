@@ -1,0 +1,26 @@
+@if(timers.length > 0){
+<h1>Existing</h1>
+@for (timer of timers; track timer.title) {
+<button (click)="startTimer(timer)">{{timer.title}}</button>
+}
+}
+
+
+<h1>New</h1>
+<label>Name</label>
+<input type="text" [(ngModel)]="timerSetup.title" name="title"><br>
+<label>End text</label>
+<input type="text" [(ngModel)]="timerSetup.endText" name="endText"><br>
+<br>-----------------------<br>
+
+@for(el of timerSetup.timerElements; track el.text; let idx = $index){
+<label>Text</label>
+<input type="text" [(ngModel)]="el.text" name="text-{{idx}}"><br>
+<label>Tijd in seconds</label>
+<input type="number" [(ngModel)]="el.timeInSeconds" name="time-{{idx}}"><br>
+<button (click)="remove(idx)">-</button>
+<br>-----------------------<br>
+}
+<button (click)="add()">+</button>
+<br><br>
+<button (click)="create()">Add Timer</button>

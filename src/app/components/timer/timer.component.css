@@ -1,0 +1,50 @@
+.logo {
+    display: block;
+    margin-top: 20;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-size: 16rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: puffin-display, sans-serif;
+}
+
+.timer {
+    font-size: 4rem;
+    color: gray;
+    text-align: center;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: lightgray;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: purple;
+    width: 50%;
+    /* This should be updated dynamically */
+}
+
+.edges {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 20px solid purple;
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+

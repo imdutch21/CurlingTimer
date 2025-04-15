@@ -1,0 +1,15 @@
+
+<img src="https://www.vebego.com/media/wksmrxiz/logo-vebego-svg.svg" alt="Logo" class="logo">
+
+<h1 class="title">{{title}}</h1>
+@if(!finished){
+<h3 class="timer">{{minutesLeft < 10? "0":""}}{{minutesLeft}}:{{secondsLeft < 10? "0":""}}{{secondsLeft}}</h3>
+}
+
+<div class="progress-bar">
+    <div class="progress-fill" [style.width]="progressPercentage + '%'"></div>
+</div>
+
+<div class="edges"></div>
+
+
