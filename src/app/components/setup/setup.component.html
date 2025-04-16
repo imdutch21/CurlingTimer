@@ -1,3 +1,5 @@
+<br>
+
 <!-- Existing Timers Section -->
 @if(timers.length > 0) {
 <div class="card mb-4">
@@ -156,7 +158,7 @@
         }
     </div>
 </div>
-<br>
+<br><br>
 <div class="card">
     <div class="card-header bg-primary text-white">
         <h5 class="mb-0">Creating a new timer</h5>
@@ -184,10 +186,17 @@
                     <li><b>Time in seconds</b> The time this 'slide' will stay up for</li>
                     <li><b>Remove</b> Removes this 'slide'</li>
                 </ul>
-                <p>To fill the timer with example data press this button. Keep in mind this will override anything you've already done <button (click)="example()" class="btn btn-sm btn-primary">example</button></p>
+                <h4>Example</h4>
+                <img src="assets/timer_slide_1.png" alt="slide 1" style="width: 30vw;">
+                <img src="assets/timer_slide_2.png" alt="slide 1" style="width: 30vw;">
+                <br><br>
+                <p>To fill the timer with example data press this button. Keep in mind this will override anything you've already done. <button (click)="example()" class="btn btn-sm btn-primary">example</button></p>
+                <p>This example will load the next end after 15 minutes for the first 4 ends and after 16 for the last 4 ends</p>
 
                 <h4>Starting the timer</h4>
-                <p>After making a timer you can find it at the top of your screen with the entered name. You can press play here to go to the timer page. You can also edit or delete existing timers</p>
+                <p>After making a timer you can find it at the top of your screen with the entered name. You can press play here to go to the timer page. If you want to restart the timer you can simply refresh the page. You can also edit or delete existing timers</p>
+
+
             </div>
         </div>
     </div>
