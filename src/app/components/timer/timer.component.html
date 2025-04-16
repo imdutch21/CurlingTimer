@@ -1,32 +1,28 @@
 <!-- HTML Template -->
 <div class="container-fluid timer-container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
+  <div class="row justify-content-center" style="height: 100%;">
+    <div class="col-12">
+      @if(timerSetup.logoUrl !== ""){
         <img src="{{timerSetup.logoUrl}}" alt="Logo" class="logo img-fluid">
-        
-        <h1 class="title display-1">{{title}}</h1>
-        
-        @if(!finished) {
-          <h3 class="timer text-center">
-            {{minutesLeft < 10? "0":""}}{{minutesLeft}}:{{secondsLeft < 10? "0":""}}{{secondsLeft}}
-          </h3>
-        }
-      </div>
+      }
+      <br><br>
+      <h1 class="title display-1">{{title}}</h1>
+
+      @if(!finished) {
+      <h2 class="timer text-center">
+        {{minutesLeft < 10? "0" :""}}{{minutesLeft}}:{{secondsLeft < 10? "0" :""}}{{secondsLeft}} </h2>
+          }
     </div>
-    
-    <div class="progress-container">
-      <div class="progress rounded-0">
-        <div 
-          class="progress-bar" 
-          role="progressbar" 
-          [style.backgroundColor]="timerSetup.colorBar" 
-          [style.width]="progressPercentage + '%'" 
-          [attr.aria-valuenow]="progressPercentage" 
-          aria-valuemin="0" 
-          aria-valuemax="100">
-        </div>
-      </div>
-    </div>
-    
-    <div class="edges" [style.borderColor]="timerSetup.colorBorder"></div>
   </div>
+
+  <div class="progress-container">
+    <div class="progress rounded-0">
+      <div class="progress-bar" role="progressbar" [style.backgroundColor]="timerSetup.colorBar"
+        [style.width]="progressPercentage + '%'" [attr.aria-valuenow]="progressPercentage" aria-valuemin="0"
+        aria-valuemax="100">
+      </div>
+    </div>
+  </div>
+
+  <div class="edges" [style.borderColor]="timerSetup.colorBorder"></div>
+</div>

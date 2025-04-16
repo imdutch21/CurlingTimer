@@ -47,13 +47,16 @@
                     <label for="timerTitle" class="form-label">Name</label>
                     <input type="text" id="timerTitle" class="form-control" [(ngModel)]="timerSetup.title" name="title"
                         placeholder="Enter timer name">
+                    <small class="text-muted">Only displayed on the overview screen</small>
+
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    <label for="timerEndText" class="form-label">End text</label>
+                    <label for="timerEndText" class="form-label">Ending text</label>
                     <input type="text" id="timerEndText" class="form-control" [(ngModel)]="timerSetup.endText"
                         name="endText" placeholder="Text to display when timer ends">
+                    <small class="text-muted">The text displayed after the timer is finished</small>
                 </div>
             </div>
         </div>
@@ -100,7 +103,7 @@
         <!-- Timer Elements -->
         <div class="mt-4">
             <h6 class="mb-3">Timer Elements</h6>
-
+            <small class="text-muted">All the ends you want to display.</small>
             @for(el of timerSetup.timerElements; track el.text; let idx = $index){
             <div class="card mb-3 border-secondary">
                 <div class="card-body">
@@ -151,5 +154,41 @@
             </button>
         </div>
         }
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Creating a new timer</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <p>Welcome! This app helps you create custom timers for your tournaments. Here's how to get started:</p>
+                <h4>Creating Your First Timer</h4>
+                <p>Enter your tournament details in the timer form above. Your timer will include a series of timed "slides" that display during your game.</p>
+                <h4>Important note</h4>
+                <p><b>Your timers are saved locally in your browser.</b> This means they won't be available on other devices. To share a timer, simply copy the URL from the timer screen, which contains all your settings.</p>
+                <h4>Timer Settings</h4>
+                <ul>
+                    <li><b>Name:</b> Identifies your timer on the edit screen (not visible during timer display)</li>
+                    <li><b>Ending Text:</b> Message shown when the timer completes</li>
+                    <li><b>Bar Color:</b>  Color of the progress bar at the bottom of the screen</li>
+                    <li><b>Border Color:</b> Color of the border surrounding the timer display</li>
+                    <li><b>Logo URL:</b> Direct link to the image you want to display as your logo</li>
+                    <li><b>Add Element:</b> Adds a new element. You can see this as one 'slide' of the timer.</li>
+                </ul>
+                <h4>Timer Elements</h4>
+                <ul>
+                    <li><b>Text</b> This is the text that will be displayed on the screen</li>
+                    <li><b>Time in seconds</b> The time this 'slide' will stay up for</li>
+                    <li><b>Remove</b> Removes this 'slide'</li>
+                </ul>
+                <p>To fill the timer with example data press this button. Keep in mind this will override anything you've already done <button (click)="example()" class="btn btn-sm btn-primary">example</button></p>
+
+                <h4>Starting the timer</h4>
+                <p>After making a timer you can find it at the top of your screen with the entered name. You can press play here to go to the timer page. You can also edit or delete existing timers</p>
+            </div>
+        </div>
     </div>
 </div>
